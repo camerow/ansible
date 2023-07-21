@@ -1,0 +1,22 @@
+- name: "Check out dotfiles from repository"
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: ./tmp-dotfiles
+    accept_hostkey: yes
+    force: yes
+    recursive: no
+    key_file: "$HOME/{{ ssh_key }}"
+
+- name: "Copy .gitconfig"
+  copy:
+    src: ./tmp-dotfiles/.gitconfig
+    dest: "$HOME/.gitconfig"
+    owner: "{{ user }}"
+    mode: "0644"
+
+- name: "Copy .zshrc"
+  copy:
+    src: ./tmp-dotfiles/.gitconfig
+    dest: "$HOME/.zshrc"
+    owner: "{{ user }}"
+    mode: "0644"
