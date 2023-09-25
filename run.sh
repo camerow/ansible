@@ -11,4 +11,4 @@ if [$? -eq 1]
 fi
 
 
-ansible-playbook -i inventory playbook.yml -vvvv
+ansible-playbook -i inventory playbook.yml -vvvv --ask-vault-password
