@@ -32,7 +32,7 @@
     - include: tasks/ssh.yml
       tags: ["ssh"]
     - include: tasks/node-setup.yml
-      tags: ["node", "javascript", "typescript"]
+      tags: ["node"]
     - include: tasks/zsh-setup.yml
       tags: ["zsh"]
     - include: tasks/dotfiles.yml
