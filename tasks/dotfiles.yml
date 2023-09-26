@@ -16,7 +16,7 @@
 
 - name: "Copy .zshrc"
   copy:
-    src: ./tmp-dotfiles/.gitconfig
+    src: ./tmp-dotfiles/.zshrc
     dest: "$HOME/.zshrc"
     owner: "{{ user }}"
     mode: "0644"
