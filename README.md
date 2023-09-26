@@ -16,7 +16,7 @@ This is inispired by the many demos of using ansible to setup up a fresh machine
     - `ansible-playbook -i inventory playbook.yml --tags "node, ssh"`
     - Available tags: 
       - `ssh`
-      - `node` 
-      - `javascript` 
-      - `zsh` 
+      - `node`
+      - `javascript`
+      - `zsh`
       - `dotfiles`
