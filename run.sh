@@ -1,14 +1,23 @@
-which pip
+#!/bin/bash
 
-if [$? -eq 1]
-    then
-        echo "Installing Ansible"
-        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-        python ./get-pip.py
-        sudo python -m pip install --user ansible
-    else
-        echo "Ansible found, running playbook!"
+echo "Checking Homebrew Installation"
+which brew
+
+if [ $? -eq 0 ]; then
+	echo "Homebrew found, running playbook!"
+else
+	echo "Installing Homebrew"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+echo "Checking Ansible Installation"
+which ansible
 
-ansible-playbook -i inventory playbook.yml -vvvv --ask-vault-password
+if [ $? -eq 0 ]; then
+	echo "Ansible found!"
+else
+	echo "Installing Ansible"
+	brew install ansible
+fi
+
+ansible-playbook -i inventory playbook.yml -vv --ask-vault-password

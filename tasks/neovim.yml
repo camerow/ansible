@@ -1,0 +1,19 @@
+- name: Install Neovim and useful dependencies
+  homebrew:
+    name:
+      - neovim
+      - jesseduffield/lazygit/lazygit
+      - lazygit
+      - ripgrep
+    state: latest
+
+- name: Checkout Neovim configuration  
+  git:
+    repo: "{{ neovim_config_repo }}"
+    dest: $HOME/.config/nvim/ 
+    accept_hostkey: yes
+    force: yes
+    recursive: yes 
+    key_file: "$HOME/{{ ssh_key }}"
+
+

@@ -17,12 +17,12 @@
   vars_prompt:
     - name: user
       private: false
-      confirm: true
       prompt: "What is your username?"
       salt_size: 8
 
   vars:
     dotfiles_repo: "https://github.com/camerow/dotfiles.git"
+    neovim_config_repo: "https://github.com/camerow/nvim.git"
     ssh_key: ".ssh/id_rsa"
     source_key: "./.ssh/id_rsa"
     dest_key: "$HOME/.ssh/id_rsa"
@@ -30,5 +30,12 @@
 
   tasks:
     - include: tasks/ssh.yml
+      tags: ["ssh"]
     - include: tasks/node-setup.yml
+      tags: ["node", "javascript", "typescript"]
+    - include: tasks/zsh-setup.yml
+      tags: ["zsh"]
     - include: tasks/dotfiles.yml
+      tags: ["dotfiles"]
+    - include: tasks/neovim.yml
+      tags: ["neovim"]

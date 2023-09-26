@@ -4,6 +4,8 @@
     
 - name: Change shell to zsh
   shell: chsh -s $(which zsh)
+  ignore_errors: true
+  become_user: "{{ user }}"
 
 - name: Check that we have oh-my-zsh
   stat:
@@ -12,8 +14,8 @@
 
 - name: Oh-My-Zsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
-  tags: *tags_for_zsh_tasks
-  when: oh_my_stats.stat.exists == False
+  when: 
+    - not oh_my_stats.stat.exists 
   become_user: "{{ user }}"
 
 - name: Install zsh-autosuggestions
