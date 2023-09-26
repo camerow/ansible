@@ -29,13 +29,15 @@
     personal: "$HOME/personal"
 
   tasks:
-    - include: tasks/ssh.yml
+    - import_tasks: tasks/ssh.yml
       tags: ["ssh"]
-    - include: tasks/node-setup.yml
+    - import_tasks: tasks/node-setup.yml
       tags: ["node"]
-    - include: tasks/zsh-setup.yml
+    - import_tasks: tasks/zsh-setup.yml
       tags: ["zsh"]
-    - include: tasks/dotfiles.yml
+    - import_tasks: tasks/dotfiles.yml
       tags: ["dotfiles"]
-    - include: tasks/neovim.yml
+    - import_tasks: tasks/neovim.yml
       tags: ["neovim"]
+    - import_tasks: tasks/git-config.yml
+      tags: ["git-config"]
